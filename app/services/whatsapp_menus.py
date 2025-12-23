@@ -24,14 +24,29 @@ SUB_MENUS = {
         {"id": "SUB_3_2", "title": "תת-אפשרות 3-2"},
         {"id": "SUB_3_3", "title": "תת-אפשרות 3-3"},
     ],
+    "SUB_1_1": [
+        {"id": "SUB_1_1_A", "title": "קינוחים"},
+        {"id": "SUB_1_1_B", "title": "תבלינים"},
+        {"id": "SUB_1_1_C", "title": "תבשילים פרווה"},
+        {"id": "SUB_1_1_D", "title": "תבשילים חלבים"},
+        {"id": "SUB_1_1_E", "title": "מטבלים"},
+        {"id": "SUB_1_1_F", "title": "תבשילים בשריים"},
+        {"id": "SUB_1_1_G", "title": "תבשילים חלבים"},
+        {"id": "SUB_1_1_H", "title": "מאפים"},
+        {"id": "SUB_1_1_I", "title": "משקים"},
+    ],
+    "SUB_1_1_A": [
+        {"id": "SUB_1_1_A1", "title": "מקסקס"}
+    ]
 }
+
 
 def action_generic(action_id: str, user: str) -> str:
     print(f"⚙️ Running action {action_id} for user {user}")
     return f"✅ הפעולה {action_id} בוצעה בהצלחה"
 
 SUB_ACTIONS = {
-    "SUB_1_1": lambda u: read_word_to_json(file_path),
+    "SUB_1_1_A1": lambda u: read_word_to_json(file_path),
     "SUB_1_2": lambda u: action_generic("SUB_1_2", u),
     "SUB_1_3": lambda u: action_generic("SUB_1_3", u),
     "SUB_2_1": lambda u: action_generic("SUB_2_1", u),
