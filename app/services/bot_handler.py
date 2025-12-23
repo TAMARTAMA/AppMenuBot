@@ -32,7 +32,7 @@ def handle_interactive_message(msg: Message) -> None:
     if button_id in SUB_ACTIONS:
         result = SUB_ACTIONS[button_id](msg.from_)
         send_text(msg.from_, result)
-        send_main_menu(msg.from_)
+        # send_main_menu(msg.from_)
         return
     send_text(msg.from_, "בחירה לא מוכרת.")
     send_main_menu(msg.from_)
