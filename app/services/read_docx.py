@@ -1,7 +1,7 @@
 from docx import Document
 import json
 
-def read_word_to_text(file_path: str, max_chars: int = 4000) -> str:
+def read_word_to_json(file_path: str, max_chars: int = 4000) -> str:
     """
     קוראת קובץ Word (.docx) ומחזירה מחרוזת טקסט
     שמתאימה לשליחה בהודעת WhatsApp.
