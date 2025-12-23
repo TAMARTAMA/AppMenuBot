@@ -1,4 +1,5 @@
-from app.services.whatsapp_utils import  send_main_menu
+from app.services.whatsapp_utils import  send_main_menu , send_sub_menu, send_text
+from app.services.whatsapp_menus import SUB_MENUS, SUB_ACTIONS
 from app.models.webhook_models import Message
 def handle_message(msg: Message) -> None:
     if msg.type == "text" and msg.text:
@@ -9,11 +10,32 @@ def handle_message(msg: Message) -> None:
         if button:
             print("📩 button clicked:", button.id, button.title)
         handle_interactive_message(msg)
+    send_text(msg.from_, "בחירה לא מוכרת.")
+    send_main_menu(msg.from_)
+    return
+
 def handle_text_message(msg: Message) -> None:
     send_main_menu(msg.from_)
-def handle_interactive_message(msg: Message) -> None:
-    pass
 
+def handle_interactive_message(msg: Message) -> None:
+    button_id = msg.interactive.button_reply.id if msg.interactive.button_reply else None
+    if not button_id:
+        # send_text(user, "לא הבנתי את הבחירה. נסה שוב.")
+        send_main_menu(msg.from_)
+        return
+
+    if button_id in SUB_MENUS:
+        send_sub_menu(msg.from_, button_id)
+        return
+
+    if button_id in SUB_ACTIONS:
+        result = SUB_ACTIONS[button_id](msg.from_)
+        send_text(msg.from_, result)
+        send_main_menu(msg.from_)
+        return
+    send_text(msg.from_, "בחירה לא מוכרת.")
+    send_main_menu(msg.from_)
+    return
 # def handle_message(msg: dict,user_id) -> None:
 #     if not user_id:
 #         return
