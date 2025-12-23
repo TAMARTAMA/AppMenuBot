@@ -28,7 +28,7 @@ def action_generic(action_id: str, user: str) -> str:
     return f"✅ הפעולה {action_id} בוצעה בהצלחה"
 
 SUB_ACTIONS = {
-    "SUB_1_1": lambda : read_word_to_json(R"C:\Users\USER\Desktop\tichnut\AppMenuBot\app\מקסקס.doc"),
+    "SUB_1_1": lambda u: read_word_to_json(R"C:\Users\USER\Desktop\tichnut\AppMenuBot\app\מקסקס.doc"),
     "SUB_1_2": lambda u: action_generic("SUB_1_2", u),
     "SUB_1_3": lambda u: action_generic("SUB_1_3", u),
     "SUB_2_1": lambda u: action_generic("SUB_2_1", u),
