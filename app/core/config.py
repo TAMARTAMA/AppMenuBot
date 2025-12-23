@@ -1,0 +1,6 @@
+import os
+
+VERIFY_TOKEN = os.getenv("WHATSAPP_VERIFY_TOKEN", "my_verify_token_123")
+WHATSAPP_TOKEN = os.getenv("WHATSAPP_ACCESS_TOKEN", "")
+PHONE_NUMBER_ID = os.getenv("WHATSAPP_PHONE_NUMBER_ID", "")
+GRAPH_API_VERSION = os.getenv("GRAPH_API_VERSION", "v21.0")
