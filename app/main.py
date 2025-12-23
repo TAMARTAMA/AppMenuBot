@@ -10,3 +10,7 @@ app = FastAPI(
 app.include_router(api_router)
 
 print("🚀 Server starting...")
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the WhatsApp Bot API!"}
