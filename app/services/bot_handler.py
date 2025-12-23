@@ -10,8 +10,9 @@ def handle_message(msg: Message) -> None:
         if button:
             print("📩 button clicked:", button.id, button.title)
         handle_interactive_message(msg)
-    send_text(msg.from_, "בחירה לא מוכרת.")
-    send_main_menu(msg.from_)
+    else:
+        send_text(msg.from_, "בחירה לא מוכרת.")
+        send_main_menu(msg.from_)
     return
 
 def handle_text_message(msg: Message) -> None:
