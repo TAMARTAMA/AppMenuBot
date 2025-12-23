@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Request
-from flask import json
-
+import json
 from app.models.webhook_models import WebhookPayload
 from app.core.config import VERIFY_TOKEN
 from app.services.state import get_user_state, set_user_state
