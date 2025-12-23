@@ -1,4 +1,7 @@
 from app.services.read_docx import read_word_to_json
+from pathlib import Path
+file_path = Path(__file__).parent.parent / "mas.doc"
+
 MAIN_MENU = [
     {"id": "MAIN_1", "title": "התייעצות"},
     {"id": "MAIN_2", "title": "הורדות"},
@@ -28,7 +31,7 @@ def action_generic(action_id: str, user: str) -> str:
     return f"✅ הפעולה {action_id} בוצעה בהצלחה"
 
 SUB_ACTIONS = {
-    "SUB_1_1": lambda u: read_word_to_json(R"C:\Users\USER\Desktop\tichnut\AppMenuBot\app\מקסקס.doc"),
+    "SUB_1_1": lambda u: read_word_to_json(file_path),
     "SUB_1_2": lambda u: action_generic("SUB_1_2", u),
     "SUB_1_3": lambda u: action_generic("SUB_1_3", u),
     "SUB_2_1": lambda u: action_generic("SUB_2_1", u),
