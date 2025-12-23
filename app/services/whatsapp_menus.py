@@ -1,6 +1,6 @@
 from app.services.read_docx import read_word_to_json
 from pathlib import Path
-file_path = Path(__file__).parent.parent / "mas.doc"
+file_path = Path(__file__).parent.parent / "mas.docx"
 
 MAIN_MENU = [
     {"id": "MAIN_1", "title": "התייעצות"},
