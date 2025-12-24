@@ -1,11 +1,3 @@
-# async def handle_webhook(payload: dict):
-#     # כאן תהיה כל הלוגיקה:
-#     # זיהוי הודעה
-#     # ניתוב לפי תפריט
-#     # שליחת תשובה
-#     print("📥 Incoming webhook:")
-#     print(payload)
-import json
 from typing import Optional, Dict, Any
 import requests
 from app.core.config import GRAPH_API_VERSION, PHONE_NUMBER_ID, WHATSAPP_TOKEN
