@@ -6,10 +6,12 @@ def handle_message(msg: Message) -> None:
         print("📩 text:", msg.text.body)
         handle_text_message(msg)
     elif msg.type == "interactive" and msg.interactive:
-        button = msg.interactive.button_reply
-        if button:
-            print("📩 button clicked:", button.id, button.title)
-        handle_interactive_message(msg)
+        interactive = msg.interactive
+        if interactive.type == "button_reply":
+            selected_id = interactive.button_reply.id
+        elif interactive.type == "list_reply":
+            selected_id = interactive.list_reply.id
+        handle_interactive_message(msg.from_, selected_id)
     else:
         send_text(msg.from_, "בחירה לא מוכרת.")
         send_main_menu(msg.from_)
@@ -18,24 +20,24 @@ def handle_message(msg: Message) -> None:
 def handle_text_message(msg: Message) -> None:
     send_main_menu(msg.from_)
 
-def handle_interactive_message(msg: Message) -> None:
-    button_id = msg.interactive.button_reply.id if msg.interactive.button_reply else None
-    if not button_id:
+def handle_interactive_message(user: str, menu_id: str) -> None:
+    
+    if not menu_id:
         # send_text(user, "לא הבנתי את הבחירה. נסה שוב.")
-        send_main_menu(msg.from_)
+        send_main_menu(user)
         return
 
-    if button_id in SUB_MENUS:
-        send_sub_menu(msg.from_, button_id)
+    if menu_id in SUB_MENUS:
+        send_sub_menu(user, menu_id)
         return
 
-    if button_id in SUB_ACTIONS:
-        result = SUB_ACTIONS[button_id](msg.from_)
-        send_text(msg.from_, result)
+    if menu_id in SUB_ACTIONS:
+        result = SUB_ACTIONS[menu_id](user)
+        send_text(user, result)
         # send_main_menu(msg.from_)
         return
-    send_text(msg.from_, "בחירה לא מוכרת.")
-    send_main_menu(msg.from_)
+    send_text(user, "בחירה לא מוכרת.")
+    send_main_menu(user)
     return
 # def handle_message(msg: dict,user_id) -> None:
 #     if not user_id:

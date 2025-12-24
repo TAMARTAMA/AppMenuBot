@@ -1,3 +1,5 @@
+
+import json
 from typing import Optional, Dict, Any
 import requests
 from app.core.config import GRAPH_API_VERSION, PHONE_NUMBER_ID, WHATSAPP_TOKEN
@@ -14,7 +16,17 @@ def send_sub_menu(user: str, main_id: str):
         send_main_menu(user)
         return
     print(f"📋 Sending SUB menu for {main_id} to {user}")
-    send_buttons(user, "בחר פעולה:", submenu)
+    if len(submenu) <= 3:
+        send_buttons(user, "בחר פעולה:", submenu)
+    else:
+        send_list_menu(
+            to=user,
+            header="בחירת קטגוריה",
+            body="יש לבחור אחת מהאפשרויות הבאות:",
+            button_text="פתח תפריט",
+            items=submenu
+        )
+    
     # user_state[user] = {"stage": "SUB", "main": main_id}
     
 def send_text(to: str, text: str):
@@ -44,6 +56,47 @@ def send_buttons(to: str, text: str, buttons: list):
         },
     }
     wa_send(payload)
+
+def send_list_menu(
+    to: str,
+    header: str,
+    body: str,
+    button_text: str,
+    items: list
+):
+    payload = {
+        "messaging_product": "whatsapp",
+        "to": to,
+        "type": "interactive",
+        "interactive": {
+            "type": "list",
+            "header": {
+                "type": "text",
+                "text": header
+            },
+            "body": {
+                "text": body
+            },
+            "action": {
+                "button": button_text,
+                "sections": [
+                    {
+                        "title": "אפשרויות",
+                        "rows": [
+                            {
+                                "id": item["id"],
+                                "title": item["title"]
+                            }
+                            for item in items[:10]  # מגבלת WhatsApp
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+
+    wa_send(payload)
+
 
 def wa_send(payload: dict):
     url = f"https://graph.facebook.com/{GRAPH_API_VERSION}/{PHONE_NUMBER_ID}/messages"
