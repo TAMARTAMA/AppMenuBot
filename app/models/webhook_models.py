@@ -8,9 +8,14 @@ class ButtonReply(BaseModel):
     id: str
     title: str
 
+class ListReply(BaseModel):
+    id: str
+    title: str
+    
 class Interactive(BaseModel):
     type: str
     button_reply: Optional[ButtonReply] = None
+    list_reply: Optional[ListReply] = None
     
 class Message(BaseModel):
     from_: str = Field(..., alias="from")
