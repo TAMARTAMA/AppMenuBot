@@ -9,7 +9,9 @@ def read_word_to_json(file_path: str, max_chars: int = 4000) -> str:
     max_chars – הגבלה למניעת חריגה ממגבלת WhatsApp
     """
     try:
-        doc = Document(file_path)
+        doc = Document(str(file_path))
+        if not file_path.exists():
+            return f"הקובץ לא נמצא: {file_path}"
 
         paragraphs = [
             p.text.strip()

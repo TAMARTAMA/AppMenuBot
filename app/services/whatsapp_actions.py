@@ -13,6 +13,10 @@ SUB_ACTIONS = {
     "SUB_1_1_A3": lambda u: read_word_to_json(file_path / "התייעצות" / "מאכלי תימן" / "קינוחים" / "כעכות.docx"),
     "SUB_1_1_A4": lambda u: read_word_to_json(file_path / "התייעצות" / "מאכלי תימן" / "קינוחים" / "לסיס.docx"),
     "SUB_1_1_A5": lambda u: read_word_to_json(file_path / "התייעצות" / "מאכלי תימן" / "קינוחים" / "עטאר.docx"),
+
+    "SUB_1_1_B1": lambda u: read_word_to_json(file_path / "התייעצות" / "מאכלי תימן" / "תבלינים" / "חוויג למרק.docx"),
+    "SUB_1_1_B2": lambda u: read_word_to_json(file_path / "התייעצות" / "מאכלי תימן" / "תבלינים" / "חוויג לקפה.docx"),
+    
     "SUB_1_2": lambda u: action_generic("SUB_1_2", u),
     "SUB_1_3": lambda u: action_generic("SUB_1_3", u),
     "SUB_2_1": lambda u: action_generic("SUB_2_1", u),
