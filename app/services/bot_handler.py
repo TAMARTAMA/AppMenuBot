@@ -1,5 +1,6 @@
 from app.services.whatsapp_utils import  send_main_menu , send_sub_menu, send_text
-from app.services.whatsapp_menus import SUB_MENUS, SUB_ACTIONS
+from app.services.whatsapp_menus import SUB_MENUS
+from app.services.whatsapp_actions import SUB_ACTIONS
 from app.models.webhook_models import Message
 def handle_message(msg: Message) -> None:
     if msg.type == "text" and msg.text:
@@ -21,7 +22,6 @@ def handle_text_message(msg: Message) -> None:
     send_main_menu(msg.from_)
 
 def handle_interactive_message(user: str, menu_id: str) -> None:
-    
     if not menu_id:
         # send_text(user, "לא הבנתי את הבחירה. נסה שוב.")
         send_main_menu(user)
