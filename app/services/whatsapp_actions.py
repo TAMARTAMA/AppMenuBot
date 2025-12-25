@@ -44,6 +44,25 @@ SUB_ACTIONS = {
 
     "SUB_1_1_I1": lambda u: read_word_to_json(file_path / "התייעצות" / "מאכלי תימן" / "משקים" / "קפה קשר.docx"),
 
+    "SUB_1_2_A": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "האתרוג.docx"),
+    "SUB_1_2_B": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "הבבונג.docx"),
+    "SUB_1_2_C": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "הגרגיר.docx"),
+    "SUB_1_2_D": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "החילבה.docx"),  
+    "SUB_1_2_E": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "הכחול.docx"),
+    "SUB_1_2_F": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "הכמון.docx"),
+    "SUB_1_2_G": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "המכווה.docx"),
+    "SUB_1_2_H": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "הקאת.docx"),
+    "SUB_1_2_I": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "הרדוף הנחלים.docx"),
+    "SUB_1_2_J": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "הריחאן.docx"),
+    "SUB_1_2_K": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "הרימון.docx"),
+    "SUB_1_2_L": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "השדאב.docx"),
+    "SUB_1_2_M": lambda u: read_word_to_json(file_path / "התייעצות" / "צמחי תימן" / "שיער הראש.docx"),
+
+    "SUB_1_3_A": lambda u: read_word_to_json(file_path / "התייעצות" / "רפואות תימן" / "סגולות רפואיות בדומם.docx"),
+    "SUB_1_3_B": lambda u: read_word_to_json(file_path / "התייעצות" / "רפואות תימן" / "סגולות רפואיות החי.docx"),
+    "SUB_1_3_C": lambda u: read_word_to_json(file_path / "התייעצות" / "רפואות תימן" / "סגולות רפואיות במזון.docx"),
+    "SUB_1_3_D": lambda u: read_word_to_json(file_path / "התייעצות" / "רפואות תימן" / "סגולות רפואיות בצומח.docx"),
+
     "SUB_1_2": lambda u: action_generic("SUB_1_2", u),
     "SUB_1_3": lambda u: action_generic("SUB_1_3", u),
     "SUB_2_1": lambda u: action_generic("SUB_2_1", u),
